@@ -93,7 +93,6 @@ while (continued):
     if len(temp_data) >= num :
         # Save the user's training data output to .pkl
         joblib.dump(temp_data,directory+'/face_descriptor.pkl')
-        #print("Finish !! , Data Lenth = " + len(temp_data) )
         done = True
         continued = False
 
