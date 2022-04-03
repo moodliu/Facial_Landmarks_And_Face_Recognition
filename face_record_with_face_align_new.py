@@ -86,12 +86,7 @@ while (continued):
                 temp_data=face_descriptor
             else:
                 temp_data=np.append(temp_data,face_descriptor,axis=0)
-            '''
-            with open(name + "_face_descriptor_info.txt", "a") as face_descriptor_info:
-                print("Frame " + str(len(temp_data)) + ":", file=face_descriptor_info)
-                print(face_descriptor, file=face_descriptor_info)
-                face_descriptor_info.close()
-            '''
+            
         cv2.imshow('Original',frame)
         cv2.imshow('Aligned',Aligned_face)
 
