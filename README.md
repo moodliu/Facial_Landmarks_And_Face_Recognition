@@ -64,6 +64,7 @@ num = 300
 
 ## 目前已知問題
 
+如發生以下報錯
 `"File "專案資料夾(依檔案存放位置不同會有不同路徑)\face_record_with_face_align_new.py", line 75, in <module> Aligned_face = fa.align(frame, gray, d)"`
 
 到`align`的source code `facealigner.py` 將Line.64&65 改為 `eyesCenter = ((leftEyeCenter[0] + rightEyeCenter[0]) // 2.0, (leftEyeCenter[1] + rightEyeCenter[1]) // 2.0)`
