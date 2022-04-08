@@ -52,11 +52,7 @@ done = False
 while (continued):
     #ret boolean ,判斷是否有擷取到影像
     ret, frame = cap.read()
-    '''
-    if ret == False :
-        joblib.dump(temp_data,directory+'/face_descriptor.pkl')
-        break
-    '''
+    
     #圖片灰階
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     #scores代表辨識分數，分數越高則人臉辨識的精確率越高，而idx代表臉部方向
