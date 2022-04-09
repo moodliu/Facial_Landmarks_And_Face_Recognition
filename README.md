@@ -37,14 +37,9 @@ scikit-learn==0.19.1
 
 ### 樣本取樣
 
-執行`face_record_with_face_align_new.py`，預設使用webcam鏡頭，
-可透過編輯Line.29
+有 webcam版本`face_record_with_face_align_webcam.py`
 
-```
-cap = cv2.VideoCapture(0)
-#0代表使用預設鏡頭，如有外接鏡頭則編號依序增加
-#也可改成影片檔名，即可以影片進行樣本取樣
-```
+與影片版本`face_record_with_face_align_video.py`，使用前須將影片檔案放入`videos`資料夾內
 
 如需增加或減少樣本數可更改Line.33
 
