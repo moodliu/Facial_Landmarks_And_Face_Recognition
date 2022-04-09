@@ -41,7 +41,8 @@ scikit-learn==0.19.1
 
 與影片版本`face_record_with_face_align_video.py`，使用前須將影片檔案放入`videos`資料夾內
 
-如需增加或減少樣本數可更改Line.33
+如需增加或減少樣本數可更改Line.27(face_record_with_face_align_video.py)或
+                         Line.32(face_record_with_face_align_webcam.py)
 
 ```
 num = 300
