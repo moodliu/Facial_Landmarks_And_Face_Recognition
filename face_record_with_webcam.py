@@ -1,3 +1,13 @@
+'''
+Author       : Liu Xin-Yi
+Date         : 2022-04-09 11:30:56
+LastEditors  : Liu Xin-Yi
+LastEditTime : 2022-04-14 21:39:28
+FilePath     : face_record_with_webcam
+Description  : 
+
+Copyright (c) 2022 by Moodliu, All Rights Reserved.
+'''
 import os
 import dlib
 import cv2
@@ -5,6 +15,17 @@ import numpy as np
 from sklearn.externals import joblib
 from imutils.face_utils import FaceAligner
 from imutils import face_utils
+import time
+
+def proccess_percent(cur, total):
+    if cur+1 == total:
+        percent = 100.0
+        print('Sample Extraction Processing : %5s [%d/%d]' %
+              (str(percent)+'%', cur+1, total), end='\n')
+    else:
+        percent = round(1.0*cur/total*100, 1)
+        print('Sample Extraction Processing : %5s [%d/%d]' %
+              (str(percent)+'%', cur+1, total), end='\r')
 
 # Set the output directory of the user's data
 target_dir = './authorized_person/'
@@ -29,7 +50,7 @@ facerec = dlib.face_recognition_model_v1(face_rec_model_path)
 cap = cv2.VideoCapture(0)
 temp_data=[]
 continued = True
-num = 300
+sample_count = 300
 
 #資料夾創建
 while (True):
@@ -48,15 +69,16 @@ while (True):
         break
 
 done = False
+start = time.clock()
 while (continued):
     #ret boolean ,判斷是否有擷取到影像
     ret, frame = cap.read()
-    
+    frame = cv2.resize(frame, None, fx=0.5, fy=0.5)
     #圖片灰階
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     #scores代表辨識分數，分數越高則人臉辨識的精確率越高，而idx代表臉部方向
     #第三個參數是指定分數的門檻值，所有分數超過這個門檻值的偵測結果都會被輸出
-    faces,scores,idx = detector.run(gray, 0,0)
+    faces,scores,idx = detector.run(gray, 0,0.8)
 
     for i,d in enumerate(faces) :
         '''
@@ -67,6 +89,7 @@ while (continued):
             cv2.circle(frame, (x, y), 1, (0, 0, 255), -1)
         '''
         Aligned_face = fa.align(frame, gray, d) 
+        Aligned_face = cv2.resize(Aligned_face, None, fx=0.5, fy=0.5)
         Aligned_faces,Alig_scores,Alig_idx = detector.run(Aligned_face, 0,0)
         for alig_i, alig_d in enumerate(Aligned_faces) :
             Aligned_face_shape = predictor(Aligned_face, alig_d)
@@ -81,11 +104,11 @@ while (continued):
                 temp_data=face_descriptor
             else:
                 temp_data=np.append(temp_data,face_descriptor,axis=0)
-            
+        proccess_percent(len(temp_data), sample_count)  
         cv2.imshow('Original',frame)
         cv2.imshow('Aligned',Aligned_face)
 
-    if len(temp_data) >= num :
+    if len(temp_data) >= sample_count :
         # Save the user's training data output to .pkl
         joblib.dump(temp_data,directory+'/face_descriptor.pkl')
         done = True
@@ -93,6 +116,8 @@ while (continued):
 
     if cv2.waitKey(1) & done :
         break
+elapsed = (time.clock() - start)
+print("Time used:", elapsed)
 # When everything done, release the capture
 cap.release()
 cv2.destroyAllWindows()
