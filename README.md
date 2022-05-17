@@ -28,21 +28,20 @@ opencv-python==4.5.5.62
 dlib==19.22.0
 cmake==3.22.1
 numpy==1.18.5
-joblib==1.1.0
 imutils==0.5.4
 scikit-learn==0.19.1
 ```
 
 ## 使用步驟
 
-### 樣本取樣
+### 樣本取樣(待更新)
 
 有 webcam版本`face_record_with_face_align_webcam.py`
 
 與影片版本`face_record_with_face_align_video.py`，使用前須將影片檔案放入`videos`資料夾內
 
 如需增加或減少樣本數可更改Line.27(face_record_with_face_align_video.py)或
-                         Line.32(face_record_with_face_align_webcam.py)
+Line.32(face_record_with_face_align_webcam.py)
 
 ```
 num = 300
@@ -54,13 +53,13 @@ num = 300
 
 執行`face_train_model_modify.py`，訓練完成後的相關檔案會存放在`nn_model`資料夾
 
-### 臉部辨識
+### 臉部辨識(待更新)
 
 執行`face_detect_recog_with_face_align.py`會依照訓練結果來進行臉部判斷，如辨識後權重有達一定程度會顯示該名稱，如未與訓練集中人員相似則會顯示"UNKNOW"
 
 ## 目前已知問題
 
-如發生以下報錯
+如發生以下報錯(待更新)
 `"File "專案資料夾(依檔案存放位置不同會有不同路徑)\face_record_with_face_align_new.py", line 75, in <module> Aligned_face = fa.align(frame, gray, d)"`
 
 到`align`的source code `facealigner.py` 將Line.64&65 改為 `eyesCenter = ((leftEyeCenter[0] + rightEyeCenter[0]) // 2.0, (leftEyeCenter[1] + rightEyeCenter[1]) // 2.0)`
