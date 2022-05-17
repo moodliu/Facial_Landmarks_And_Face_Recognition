@@ -34,28 +34,32 @@ scikit-learn==0.19.1
 
 ## 使用步驟
 
-### 樣本取樣(待更新)
+### 樣本取樣
 
-有 webcam版本`face_record_with_face_align_webcam.py`
+有 webcam版本`face_record_with_webcam.py`
 
-與影片版本`face_record_with_face_align_video.py`，使用前須將影片檔案放入`videos`資料夾內
+與影片版本`face_record_with_video.py`，使用前須將影片檔案放入`videos`資料夾內
 
-如需增加或減少樣本數可更改Line.27(face_record_with_face_align_video.py)或
-Line.32(face_record_with_face_align_webcam.py)
+如需改變樣本數可更改Line.47(face_record_with_video.py)或
+Line.53(face_record_with_webcam.py)
 
 ```
-num = 300
+sample_count= 300
 ```
 
 取樣完畢後會在`authorized_person`資料夾中生成對應的資料夾，並將取樣檔案放入該資料夾中
 
+使用`face_record_with_video`會依照檔案名稱生成對應的取樣檔案，如:test.mp4->temp.pkl
+
+使用`face_record_with_webcam` 會依照執行時輸入的名稱去對取樣檔案進行命名
+
 ### 神經網路訓練
 
-執行`face_train_model_modify.py`，訓練完成後的相關檔案會存放在`nn_model`資料夾
+執行`face_train_model.py`，訓練完成後的相關檔案會存放在`nn_model`資料夾
 
 ### 臉部辨識(待更新)
 
-執行`face_detect_recog_with_face_align.py`會依照訓練結果來進行臉部判斷，如辨識後權重有達一定程度會顯示該名稱，如未與訓練集中人員相似則會顯示"UNKNOW"
+執行`face_recognition_with_csv_rollcall.py`會依照訓練結果來進行臉部判斷，如辨識後權重有達一定程度會顯示該名稱，如未與訓練集中人員相似則會顯示"UNKNOW"
 
 ## 目前已知問題
 
