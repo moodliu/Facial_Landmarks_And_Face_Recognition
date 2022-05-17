@@ -40,7 +40,7 @@ neg_image_dir='unknown_person/'
 
 # Keras neural network model learning parameter
 batch_size = 50
-epochs = 100
+epochs = 15
 loss = 'categorical_crossentropy'
 sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
 rmsprop = RMSprop(lr=0.001, rho=0.9, epsilon=1e-08)
@@ -151,7 +151,7 @@ print ('Processing UNKNOWN person data')
 label_dict[class_counter]='UNKNOWN'
 joblib.dump(label_dict,nn_model_dir+labeldict_filename)
 
-neg_data=joblib.load(neg_image_dir+'preprocessed_data/face_recog_neg_data_gray.pkl')
+neg_data=joblib.load(neg_image_dir+'preprocessed_data/unknown_person_face_descriptor.pkl')
 temp_data=neg_data
 
 temp_label=np.repeat(class_counter,len(temp_data))

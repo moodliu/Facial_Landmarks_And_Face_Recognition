@@ -2,7 +2,7 @@
 Author       : Liu Xin-Yi
 Date         : 2022-04-09 11:30:56
 LastEditors  : Liu Xin-Yi
-LastEditTime : 2022-04-14 21:39:28
+LastEditTime : 2022-04-16 07:23:50
 FilePath     : face_record_with_webcam
 Description  : 
 
@@ -34,8 +34,8 @@ if not os.path.exists(target_dir):
     os.makedirs(target_dir)
 
 # DLIB's model path for face pose predictor and deep neural network model
-predictor_path='./shape_predictor_68_face_landmarks.dat'
-face_rec_model_path='./dlib_face_recognition_resnet_model_v1.dat'
+predictor_path='./face_detect_landmarks_model/shape_predictor_68_face_landmarks.dat'
+face_rec_model_path='./face_detect_landmarks_model/dlib_face_recognition_resnet_model_v1.dat'
 
 #人臉辨識
 detector = dlib.get_frontal_face_detector() 
