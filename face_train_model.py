@@ -103,6 +103,7 @@ y_train=[]
 y_test=[]
 
 authorized_person_list=os.listdir(pos_image_dir)
+authorized_person_list.remove('.gitignore')
 #加上一加上一個unknow person的lable
 nb_class=len(authorized_person_list)+1
 
