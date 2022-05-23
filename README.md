@@ -6,6 +6,7 @@
 
 ```
 windows 10 64bit 20H2
+Visual studio 2017
 python=3.6
 Nvidia版本=511.23
 Cuda版本=10.2
@@ -64,7 +65,13 @@ sample_count= 300
 ## 目前已知問題
 
 如發生以下報錯(待更新)
-`"File "專案資料夾(依檔案存放位置不同會有不同路徑)\face_record_with_face_align_new.py", line 75, in <module> Aligned_face = fa.align(frame, gray, d)"`
+
+```
+"File "專案資料夾(依檔案存放位置不同會有不同路徑)\face_record_with_face_align_new.py", line 75, in <module> Aligned_face = fa.align(frame, gray, d)"
+File "C:\Users\(Username)\anaconda3\lib\site-packages\imutils\face_utils\facealigner.py", line 68, in align
+M = cv2.getRotationMatrix2D(eyesCenter, angle, , scale)
+TypeError: Can't parse 'center'. Sequence item with index 0 has a wrong type
+```
 
 到`align`的source code `facealigner.py` 將Line.64&65 改為 `eyesCenter = ((leftEyeCenter[0] + rightEyeCenter[0]) // 2.0, (leftEyeCenter[1] + rightEyeCenter[1]) // 2.0)`
 
@@ -74,7 +81,7 @@ sample_count= 300
 
 ```----------------#Dlib GPU ----------------
 import dlib
-dlib.DLIB_USE_CUDA # True 表示可以使用 GPU
+print(dlib.DLIB_USE_CUDA) # True 表示可以使用 GPU
 #(舊版本19.8.1要安裝GPU版本需複雜操作，不建議)
 #(以取樣300次比較，約快4倍時間)
 ```
