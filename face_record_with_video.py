@@ -2,13 +2,12 @@
 Author       : Liu Xin-Yi
 Date         : 2022-04-15 23:17:23
 LastEditors  : Liu Xin-Yi
-LastEditTime : 2022-04-16 07:24:04
+LastEditTime : 2022-05-26 11:22:46
 FilePath     : face_record_with_video
 Description  : 
 
 Copyright (c) 2022 by Moodliu, All Rights Reserved.
 '''
-from imutils import face_utils
 from imutils.face_utils import FaceAligner
 from sklearn.externals import joblib
 import numpy as np
@@ -16,7 +15,6 @@ import cv2
 import dlib
 import glob
 import os
-import sys
 import time
 
 def proccess_percent(cur, total) :

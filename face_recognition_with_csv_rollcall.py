@@ -2,7 +2,7 @@
 Author       : Liu Xin-Yi
 Date         : 2022-04-11 21:59:17
 LastEditors  : Liu Xin-Yi
-LastEditTime : 2022-04-29 09:13:20
+LastEditTime : 2022-05-26 11:22:22
 FilePath     : face_recognition_with_csv_rollcall
 Description  : 
 
@@ -14,7 +14,6 @@ import cv2
 import numpy as np
 from sklearn.externals import joblib
 from imutils.face_utils import FaceAligner
-import os
 import csv
 import glob
 

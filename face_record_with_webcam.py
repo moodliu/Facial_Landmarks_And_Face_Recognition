@@ -2,7 +2,7 @@
 Author       : Liu Xin-Yi
 Date         : 2022-04-09 11:30:56
 LastEditors  : Liu Xin-Yi
-LastEditTime : 2022-04-16 07:23:50
+LastEditTime : 2022-05-26 11:22:37
 FilePath     : face_record_with_webcam
 Description  : 
 
@@ -14,7 +14,6 @@ import cv2
 import numpy as np
 from sklearn.externals import joblib
 from imutils.face_utils import FaceAligner
-from imutils import face_utils
 import time
 
 def proccess_percent(cur, total):
