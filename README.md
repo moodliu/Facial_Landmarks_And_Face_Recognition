@@ -2,7 +2,7 @@
  * @Author       : Liu Xin-Yi
  * @Date         : 2022-05-17 10:23:52
  * @LastEditors  : Liu Xin-Yi
- * @LastEditTime : 2022-05-23 23:35:09
+ * @LastEditTime : 2022-05-24 23:42:42
  * @FilePath     : README
  * @Description  : 
  * 
@@ -114,6 +114,8 @@ TypeError: Can't parse 'center'. Sequence item with index 0 has a wrong type
 ## 貼心體醒(待更新)
 
 `Dlib` 較新版本的可從官網下載->解壓縮->開CMD->cd到目的地資料夾-> python setup.py install 成功安裝後就可使用GPU功能 預設為使用CPU。
+
+安裝VS CMAKE...
 
 ```----------------#Dlib GPU ----------------
 import dlib
