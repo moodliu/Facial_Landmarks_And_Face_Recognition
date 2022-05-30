@@ -29,7 +29,7 @@ cmake = 3.13.2
 ### 可透過以下指令安裝
 
 ```text
-pip install requirements.txt #裡面不包含DLIB，如有需要請另下指令安裝，GPU版本在安裝時會有些許複。
+pip install requirements.txt #裡面不包含DLIB，如有需要請另下指令安裝，GPU版本在安裝時會有些許複雜
 ```
 
 ### 主要所需套件
