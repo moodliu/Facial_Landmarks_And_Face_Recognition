@@ -1,7 +1,6 @@
 tensorflow-gpu==2.3.0
 Keras==2.3.1
 opencv-python==4.5.5.62
-dlib==19.22.0
 cmake==3.22.1
 numpy==1.18.5
 imutils==0.5.4
