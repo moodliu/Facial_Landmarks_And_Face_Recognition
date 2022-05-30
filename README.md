@@ -18,9 +18,10 @@
 ```text
 windows 10 64bit 20H2
 Visual studio 2017
-python=3.6
-Nvidia版本=511.23
-Cuda版本=10.2
+python = 3.6
+Nvidia版本 = 511.23
+Cuda版本 = 10.2
+cmake = 3.13.2
 ```
 
 ## 所需套件
@@ -28,7 +29,7 @@ Cuda版本=10.2
 ### 可透過以下指令安裝
 
 ```text
-pip install requirements.txt
+pip install requirements.txt #裡面不包含DLIB，如有需要請另下指令安裝，GPU版本在安裝時會有些許複。
 ```
 
 ### 主要所需套件
@@ -37,11 +38,25 @@ pip install requirements.txt
 tensorflow-gpu==2.3.0
 Keras==2.3.1
 opencv-python==4.5.5.62
-dlib==19.22.0
+dlib==19.22.0 #Default use CPU
 cmake==3.22.1
 numpy==1.18.5
 imutils==0.5.4
 scikit-learn==0.19.1
+```
+
+### 以下列出Dlib安裝成功時Visual Studio的配置，不保證都是必須安裝的元件
+
+```text
+Visual C++ 核心桌面功能
+VC++ 2017 version 15.9 v14.16 latest v141 tools
+C++分析工具
+Windows 10 SDK (10.0.17763.0)
+適用於CMake的Visual C++工具
+x86與x64版C++譯器AT
+MSBuild
+桌上型電腦版的VC++ 2015.3 v14.00(140)工具組
+英文語言套件
 ```
 
 ## 使用步驟
@@ -71,7 +86,6 @@ Line.53(face_record_with_webcam.py)。
 
 這個程式會依照訓練模組結果來進行臉部判斷，如辨識後權重有達一定程度會顯示該名稱。
 
-
 #### 使用步驟介紹
 
 在執行`face_recognition_with_csv_rollcall.py`前須先將點名需要的檔案(csv檔)放到目前的資料夾中，
@@ -81,7 +95,6 @@ Line.53(face_record_with_webcam.py)。
 而在辨識完成後按`Q`則會結束程式，並將辨識的結果寫入檔案中。
 
 #### 辨識畫面介紹
-
 
 如果沒有偵測到人臉時，會在畫面中央顯示色碼為`#00FFFF`的方框並在上方顯示`Detecting...`，
 
@@ -107,19 +120,29 @@ TypeError: Can't parse 'center'. Sequence item with index 0 has a wrong type
 
 可以參考以下兩種解決方法
 
-`https://github.com/PyImageSearch/imutils/issues/254`
+[方法一](https://github.com/PyImageSearch/imutils/issues/254) `https://github.com/PyImageSearch/imutils/issues/254`
 
-`https://blog.csdn.net/m0_46825740/article/details/120429730`
+[方法二](https://blog.csdn.net/m0_46825740/article/details/120429730) `https://blog.csdn.net/m0_46825740/article/details/120429730`
 
-## 貼心體醒(待更新)
+## 貼心體醒
+
+### Dlib 安裝方法
+
+#### setup.py 安裝
 
 `Dlib` 較新版本的可從官網下載->解壓縮->開CMD->cd到目的地資料夾-> python setup.py install 成功安裝後就可使用GPU功能 預設為使用CPU。
 
-安裝VS CMAKE...
+#### pip 安裝(未試驗過)
 
-```----------------#Dlib GPU ----------------
+`pip install dlib -v`
+
+### Visual Studio Installer 配置(在網路上看到的)
+
+`個別元件 -> Compilers,build tools,and runtimes -> VC++ ... toolset`
+
+### 安裝完成後測試
+
+```text
 import dlib
 print(dlib.DLIB_USE_CUDA) # True 表示可以使用 GPU
-#(舊版本19.8.1要安裝GPU版本需複雜操作，不建議)
-#(以取樣300次比較，約快4倍時間)
 ```
