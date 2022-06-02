@@ -2,7 +2,7 @@
  * @Author       : Liu Xin-Yi
  * @Date         : 2022-05-17 10:23:52
  * @LastEditors  : Liu Xin-Yi
- * @LastEditTime : 2022-05-24 23:42:42
+ * @LastEditTime : 2022-06-01 13:50:18
  * @FilePath     : README
  * @Description  : 
  * 
@@ -53,11 +53,31 @@ VC++ 2017 version 15.9 v14.16 latest v141 tools
 C++分析工具
 Windows 10 SDK (10.0.17763.0)
 適用於CMake的Visual C++工具
+適用於Cmake和Linux的Visual C++ 工具
 x86與x64版C++譯器AT
 MSBuild
 桌上型電腦版的VC++ 2015.3 v14.00(140)工具組
 英文語言套件
 ```
+
+### 需在環境變數->path額外新增的路徑
+
+`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64`
+
+`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe`
+
+#### Dlib安裝步驟
+
+下載Dlib zip(19.22.0) -> 解壓縮 -> 開啟CMD(系統管理員) -> 選擇要安裝的虛擬環境 -> cd 到dlib資料夾 ->
+`mkdir build` -> `cd build` ->
+`cmake -G "Visual Studio 15 2017 Win64" -T host=x64 .. -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1` ->
+`cmake --build .` #注意最後有一個 `.`  ->
+`cd..` -> `python setup.py install`  #在過程中會有很多Warning，那好像是因為文字編碼的問題導致，但不影響安裝
+
+##### ***注意事項***
+
+* Visual Studio版本需介於VS2015到VS2019間，有試過在VS2022安裝，會跳出錯誤，原因是因為CUDA資料夾中`host_config.h`的設定而導致。
+* 如果上述步驟沒有問題，但在執行`python setup.py install`有無法安裝的狀況，遇到的問題大多是因為系統內`libgif`檔案照不到或損壞，可以改成下列指令`python setup.py install --no DLIB_GIF_SUPPORT`
 
 ## 使用步驟
 
@@ -126,21 +146,7 @@ TypeError: Can't parse 'center'. Sequence item with index 0 has a wrong type
 
 ## 貼心體醒
 
-### Dlib 安裝方法
-
-#### setup.py 安裝
-
-`Dlib` 較新版本的可從官網下載->解壓縮->開CMD->cd到目的地資料夾-> python setup.py install 成功安裝後就可使用GPU功能 預設為使用CPU。
-
-#### pip 安裝(未試驗過)
-
-`pip install dlib -v`
-
-### Visual Studio Installer 配置(在網路上看到的)
-
-`個別元件 -> Compilers,build tools,and runtimes -> VC++ ... toolset`
-
-### 安裝完成後測試
+### Dlib安裝完成後測試
 
 ```text
 import dlib
