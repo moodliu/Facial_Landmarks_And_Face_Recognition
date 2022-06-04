@@ -2,7 +2,7 @@
  * @Author       : Liu Xin-Yi
  * @Date         : 2022-05-17 10:23:52
  * @LastEditors  : Liu Xin-Yi
- * @LastEditTime : 2022-06-04 09:40:52
+ * @LastEditTime : 2022-06-04 10:41:39
  * @FilePath     : README
  * @Description  : 
  * 
@@ -77,7 +77,7 @@ MSBuild
 ##### ***注意事項***
 
 * Visual Studio版本需介於VS2015到VS2019間，有試過在VS2022安裝，會跳出錯誤，原因是因為CUDA資料夾中`host_config.h`的設定而導致。
-* 如果上述步驟沒有問題，但在執行`python setup.py install`有無法安裝的狀況，遇到的問題大多是因為系統內`libgif`檔案照不到或損壞，可以改成下列指令`python setup.py install --no DLIB_GIF_SUPPORT`
+* 如果上述步驟沒有問題，但在執行`python setup.py install`有無法安裝的狀況，遇到的問題大多是因為系統內`libgif`檔案找不到或損壞，可以改成下列指令`python setup.py install --no DLIB_GIF_SUPPORT`
 
 ## 使用步驟
 
