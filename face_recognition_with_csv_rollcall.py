@@ -2,7 +2,7 @@
 Author       : Liu Xin-Yi
 Date         : 2022-04-11 21:59:17
 LastEditors  : Liu Xin-Yi
-LastEditTime : 2022-05-26 11:22:22
+LastEditTime : 2022-06-02 14:05:45
 FilePath     : face_recognition_with_csv_rollcall
 Description  : 
 
