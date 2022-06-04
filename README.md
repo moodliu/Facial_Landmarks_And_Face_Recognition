@@ -2,7 +2,7 @@
  * @Author       : Liu Xin-Yi
  * @Date         : 2022-05-17 10:23:52
  * @LastEditors  : Liu Xin-Yi
- * @LastEditTime : 2022-06-01 13:50:18
+ * @LastEditTime : 2022-06-04 09:40:52
  * @FilePath     : README
  * @Description  : 
  * 
@@ -169,4 +169,5 @@ import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
 gpus = tf.config.experimental.list_physical_devices(device_type='GPU')
 for gpu in gpus:
+    tf.config.experimental.set_memory_growth(gpu, True)
 ```
