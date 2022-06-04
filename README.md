@@ -152,3 +152,21 @@ TypeError: Can't parse 'center'. Sequence item with index 0 has a wrong type
 import dlib
 print(dlib.DLIB_USE_CUDA) # True 表示可以使用 GPU
 ```
+
+### 程式報錯問題
+
+如在`face_descriptor = np.array([facerec.compute_face_descriptor(Aligned_face, Aligned_face_shape)])`有發生以下報錯：
+
+```text
+發生例外狀況:RuntimeError
+Error while calling cublasCreate(&handles[new_device_id]) in file (Dlib安裝路徑)\dlib\cuda\cublas_dlibapi.cpp:78. code: 1, reason: CUDA Runtime API initialization
+```
+
+推測是因為tensorflow在啟動時會佔據大部分的GPU memory，導致在執行時可用的剩餘視訊記憶體不足，而無法完成程式碼所需的初始化作業，可在程式碼上半部分加入以下程式碼：
+
+```text
+import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
+gpus = tf.config.experimental.list_physical_devices(device_type='GPU')
+for gpu in gpus:
+```
